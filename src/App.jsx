@@ -20,7 +20,7 @@ function App() {
     fetch(`${API}/authors/${authorID}`, {
       method: "DELETE",
     }).then((res) => {
-      if (res.status === 204) {
+      if (res.status === 200) {
         setData((prevData) =>
           prevData.filter((author) => author.id !== authorID)
         );
@@ -68,15 +68,15 @@ function App() {
   };
 
   return (
-    <>
-      <h1>Tabela autorów kurna</h1>
+    <main className="flex justify-start items-center gap-14 flex-col w-full max-w-4xl mx-auto py-14 px-10">
+      <h1 className="text-2xl">TABLE of AUTHORS</h1>
       <AddAuthor onAdd={onAddAuthorSubmitHandler} />
       <AuthorList
         authors={data}
         onDelete={onDeleteAuthorClickHandler}
         onEdit={onEditAuthorClickHandler}
       />
-    </>
+    </main>
   );
 }
 

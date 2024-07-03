@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 const AuthorList = ({ authors, onDelete, onEdit }) => {
   const [editingAuthorId, setEditingAuthorId] = useState(null);
@@ -17,21 +18,22 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
   };
 
   return (
-    <table>
-      <thead>
+    <table className="w-full">
+      <thead className="text-left">
         <tr>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Actions</th>
+          <th className="p-3 py-5">Name</th>
+          <th className="p-3 py-5">Surname</th>
+          <th className="p-3 py-5">Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="">
         {authors.map(({ id, name, surname }) => (
-          <tr key={id}>
-            <td>
+          <tr className="border-t border-b border-black/50" key={id}>
+            <td className="p-3 py-2">
               {editingAuthorId === id ? (
                 <input
                   type="text"
+                  className="border"
                   value={editedName}
                   onChange={(e) => setEditedName(e.target.value)}
                 />
@@ -39,10 +41,11 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
                 name
               )}
             </td>
-            <td>
+            <td className="p-3 py-2 ">
               {editingAuthorId === id ? (
                 <input
                   type="text"
+                  className="border"
                   value={editedSurname}
                   onChange={(e) => setEditedSurname(e.target.value)}
                 />
@@ -50,15 +53,22 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
                 surname
               )}
             </td>
-            <td>
+            <td className="p-3 py-2 mx-auto">
               {editingAuthorId === id ? (
-                <button onClick={() => handleSaveClick(id)}>Save</button>
+                <Button text="Save" onclick={() => handleSaveClick(id)} />
               ) : (
-                <button onClick={() => handleEditClick({ id, name, surname })}>
-                  Edit
-                </button>
+                <div className="flex gap-3">
+                  <Button
+                    text="Edit"
+                    onclick={() => handleEditClick({ id, name, surname })}
+                  />
+                  <Button
+                    text="Delete"
+                    onclick={() => onDelete(id)}
+                    dupa="bg-red-400 hover:bg-red-600"
+                  />
+                </div>
               )}
-              <button onClick={() => onDelete(id)}>Delete</button>
             </td>
           </tr>
         ))}
