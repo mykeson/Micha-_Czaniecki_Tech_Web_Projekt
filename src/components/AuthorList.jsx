@@ -18,18 +18,19 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
   };
 
   return (
-    <table className="w-full">
-      <thead className="text-left">
-        <tr>
-          <th className="p-3 py-5">Name</th>
-          <th className="p-3 py-5">Surname</th>
-          <th className="p-3 py-5">Actions</th>
-        </tr>
-      </thead>
-      <tbody className="">
+    <section>
+      <header className="grid grid-cols-[1fr_1fr_30%] font-bold text-lg">
+        <span className="p-3">Name</span>
+        <span className="p-3">Surname</span>
+        <span className="text-right p-3">Actions</span>
+      </header>
+      <div>
         {authors.map(({ id, name, surname }) => (
-          <tr className="border-t border-b border-black/50" key={id}>
-            <td className="p-3 py-2">
+          <div
+            className="grid grid-cols-[1fr_1fr_30%] border-t border-black/20 "
+            key={id}
+          >
+            <div className="p-3 py-2">
               {editingAuthorId === id ? (
                 <input
                   type="text"
@@ -40,8 +41,8 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
               ) : (
                 name
               )}
-            </td>
-            <td className="p-3 py-2 ">
+            </div>
+            <div className="p-3 py-2 ">
               {editingAuthorId === id ? (
                 <input
                   type="text"
@@ -52,8 +53,8 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
               ) : (
                 surname
               )}
-            </td>
-            <td className="p-3 py-2 mx-auto">
+            </div>
+            <div className="p-3 py-2 flex justify-end">
               {editingAuthorId === id ? (
                 <Button text="Save" onclick={() => handleSaveClick(id)} />
               ) : (
@@ -69,11 +70,11 @@ const AuthorList = ({ authors, onDelete, onEdit }) => {
                   />
                 </div>
               )}
-            </td>
-          </tr>
+            </div>
+          </div>
         ))}
-      </tbody>
-    </table>
+      </div>
+    </section>
   );
 };
 

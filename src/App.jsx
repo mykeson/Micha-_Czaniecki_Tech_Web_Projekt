@@ -68,8 +68,8 @@ function App() {
   };
 
   return (
-    <main className="flex justify-start items-center gap-14 flex-col w-full max-w-4xl mx-auto py-14 px-10">
-      <h1 className="text-2xl">TABLE of AUTHORS</h1>
+    <main className="flex justify-start gap-14 flex-col w-full max-w-4xl mx-auto py-14 px-10">
+      <h1 className="text-3xl font-bold">TABLE of AUTHORS</h1>
       <AddAuthor onAdd={onAddAuthorSubmitHandler} />
       <AuthorList
         authors={data}

@@ -27,7 +27,7 @@ export const AddAuthor = ({ onAdd }) => (
       <div className="col-span-2 flex justify-start items-center">
         <button
           type="submit"
-          className="block bg-green-500 px-8 py-1 rounded-md transform hover:scale-[110%] transition-transform duration-[7000]"
+          className="block bg-green-500 hover:bg-green-400 px-8 py-1 w-full rounded-md transform hover:scale-[1.01] text-white transition-transform duration-[7000]"
         >
           Add Author
         </button>
